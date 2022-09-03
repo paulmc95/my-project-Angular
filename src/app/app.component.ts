@@ -20,6 +20,11 @@ export class AppComponent {
   age=18;
   img='https://www.magitech.pe/media/catalog/product/cache/1/image/650x/040ec09b1e35df139433887a97daa66f/8/_/8_13_16.jpg';
   btnDisabled=true;
+  register={
+    name:'',
+    email:'',
+    password:'',
+  }
 
   person={
     name:'Paul-Mejía',
@@ -36,6 +41,11 @@ export class AppComponent {
 
   names: string[]=['Nico','Juli','Santi'];
   newName='';
+  box={
+    width:100,
+    height:100,
+    background:'red'
+  };
 
   products:Product[] =[
     {
@@ -195,6 +205,10 @@ export class AppComponent {
 
   incrementExperience(){
     this.personDeveloper.experience++;
+  }
+
+  onRegister(){
+    console.log(this.register);
   }
 
 }

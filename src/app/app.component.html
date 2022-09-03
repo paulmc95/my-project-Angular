@@ -1,3 +1,26 @@
+<h1>Formulario</h1>
+<!-- #myForm="ngForm" para ponerle validaciones -->
+<form (ngSubmit)="onRegister()" #myForm="ngForm">
+  <div class="input-group">
+    <label for="name">Nombre: </label>
+    <input type="text" name="name" required id="name" [(ngModel)]="register.name">
+    <p>Mensajes de error</p>
+  </div>
+  <div class="input-group">
+    <label for="email">Email: </label>
+    <input type="email" name="email" required id="email" [(ngModel)]="register.email">
+    <p>Mensajes de error</p>
+  </div>
+  <div class="input-group">
+    <label for="password">Password: </label>
+    <input type="password" name="password" required id="password" [(ngModel)]="register.password">
+    <p>Mensajes de error</p>
+  </div>
+  <!-- [disabled]="myForm.invalid" -> Obliga a que sea valido el formulario, y como todos los campos son requeridos, no se activará si alguno no esta lleno -->
+  <button [disabled]="myForm.invalid" type="submit">Registrar</button>
+  <button type="button">Accion</button>
+</form>
+
 <hr/>
 <h3>NgClass &  NgStyle</h3>
 <input type="text" required #nameDeveloperInput4="ngModel" [(ngModel)]="personDeveloper.name">
@@ -9,6 +32,30 @@
     'invalid': nameDeveloperInput4.invalid
   }"
   />
+<p class="message-error" [class.invalid]="nameDeveloperInput4.invalid">
+  El campo es requerido
+</p>
+<div class="styles">
+  <div>
+    <!-- Estos permiten que las variables entren en tipo number y tipo color(paleta de colores) -->
+    <p>Ancho: </p>
+    <input type="number" [(ngModel)]="box.width">
+    <p>Alto: </p>
+    <input type="number" [(ngModel)]="box.height">
+    <p>Color: </p>
+    <input type="color" [(ngModel)]="box.background">
+  </div>
+  <div>
+    <!-- Agrega un estilo, con esos valores, y como arriba lo modifica, se puede cambiar al mismo tiempo que se va modificando -->
+    <div [ngStyle]="{
+      'width.px':box.width,
+      'height.px':box.height,
+      'background-color':box.background,
+      'display':'block'
+    }"></div>
+  </div>
+</div>
+
 <h2>Class & Style</h2>
 <input type="text" required #nameDeveloperInput2="ngModel" [(ngModel)]="personDeveloper.name">
 <p class="message-error" [class.invalid]="nameDeveloperInput2.invalid">Este campo es requerido</p>
